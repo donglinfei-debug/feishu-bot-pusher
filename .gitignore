@@ -1,0 +1,30 @@
+# 环境变量
+.env
+.env.*
+
+# 配置文件（含真实密钥）
+feishu_config.json
+config.json
+config_private.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
