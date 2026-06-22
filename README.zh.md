@@ -104,13 +104,20 @@ feishu-bot-pusher/
 └── README.md / README.zh.md
 ```
 
+## ❓ 常见问题
 
+**可以发消息到群聊而不是个人吗？**
+可以。设置 receive_id_type 为 chat_id 即可发送到群聊。
 
----
+**支持带按钮的交互卡片吗？**
+支持。`send_card()` 支持颜色头、按钮、Markdown 内容和分隔线。
 
-## 🔍 搜索关键词
+**Token 自动刷新怎么工作的？**
+FeiShuBot 在内存中缓存 tenant_access_token，在过期前自动申请新 Token——你不会再遇到 99991663 认证错误。
 
-IBKR 期权自动化交易、Interactive Brokers Python API、期权交易机器人架构、铁鹰策略自动化、SPX 期权交易、IBKR API 连接管理、TWS API Python、IB Gateway 集成、期权链数据批量获取、限价单价格调整、交易风控防抖机制、飞书 Bot 消息推送、钉钉 Webhook 集成、Gmail AI 摘要通知、Google Apps Script 邮件监控、AI 字幕校对、ASR 语音识别、DeepSeek API 集成、阿里云通义听悟 fun-asr、字幕自动生成、Claude Code 规划技能、AI 结构化规划框架、GitHub 公开仓库预处理、开源项目安全清洗、密钥自动检测、公开仓库操作清单
+**可以同时使用多个飞书应用吗？**
+可以。创建多个 FeiShuBot 实例，各自管理自己的 Token 生命周期。
+
 ## 📄 许可证
 
 MIT © 2026 Ryan Dong
@@ -118,6 +125,23 @@ MIT © 2026 Ryan Dong
 ## 🌟 Star 历史
 
 [![Star History Chart](https://api.star-history.com/svg?repos=donglinfei-debug/feishu-bot-pusher&type=Date)](https://star-history.com/#donglinfei-debug/feishu-bot-pusher&Date)
+
+
+
+## 👤 关于作者
+
+**Ryan Dong** — AI 产品经理 & 全栈开发者
+
+我在 AI 能力与生产级软件之间架桥。工作覆盖全栈：从 AI 驱动的产品功能设计、LLM API 集成，到模块化的后端服务和干净、文档完整的代码交付。
+
+| 角色 | 专注领域 |
+|:-----|:---------|
+| 🧠 **AI 产品经理** | 产品策略、AI 功能设计、Prompt 工程、模型选型 |
+| 💻 **全栈开发者** | Python、FastAPI、Google Apps Script、自动化管线、API 集成 |
+
+本仓库是我个人工具箱的一部分——一个不断增长的、解决实际自动化问题的模块集合。每个项目设计为独立可用、易于集成到更大的系统中。
+
+📬 **donglinfei@gmail.com** — 欢迎商务合作、技术交流和招聘联系。
 
 ## 📬 联系方式
 

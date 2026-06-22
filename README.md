@@ -115,11 +115,20 @@ feishu-bot-pusher/
 
 
 
----
+## ❓ FAQ
 
-## 🔍 Keywords & Search Terms
+**Can I send messages to a group chat instead of an individual user?**
+Yes. Feishu Bot supports both private chat and group chat. Set the receive_id_type to chat_id to send to a group.
 
-**IBKR options trading automation**, **Interactive Brokers Python API**, **options trading bot architecture**, **Iron Condor strategy automation**, **SPX options trading**, **IBKR API connection management**, **automated options trading system**, **TWS API Python**, **IB Gateway integration**, **options chain data fetching**, **limit order price adjustment**, **trading risk control debounce**, **Feishu bot notification**, **DingTalk webhook integration**, **Gmail AI summary notification**, **Google Apps Script Gmail monitoring**, **AI subtitle proofreading**, **ASR speech recognition**, **DeepSeek API integration**, **Alibaba Cloud fun-asr**, **subtitle generation automation**, **Claude Code planning skill**, **AI structured planning framework**, **GitHub public-prep security scan**, **open source project sanitization**, **secret detection automation**, **public repository checklist**
+**Does this support Feishu interactive cards with buttons?**
+Yes. `send_card()` supports color headers, buttons, markdown content, and dividers. You pass a standard Feishu card JSON structure.
+
+**How does token auto-refresh work?**
+The FeiShuBot caches tenant_access_token in memory and automatically requests a new one before it expires — so you never get 99991663 auth errors.
+
+**Can I use this with multiple Feishu apps?**
+Yes. Create multiple FeiShuBot instances with different app_id/app_secret pairs. Each manages its own token lifecycle independently.
+
 ## 📄 License
 
 MIT © 2026 Ryan Dong
@@ -127,6 +136,23 @@ MIT © 2026 Ryan Dong
 ## 🌟 Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=donglinfei-debug/feishu-bot-pusher&type=Date)](https://star-history.com/#donglinfei-debug/feishu-bot-pusher&Date)
+
+
+
+## 👤 About the Author
+
+**Ryan Dong** — AI Product Manager & Full-Stack Developer
+
+I bridge the gap between AI capabilities and production-ready software. My work spans the full stack: from designing AI-powered product features and integrating LLM APIs, to building modular backend services and shipping clean, documented code.
+
+| Role | Focus |
+|:-----|:------|
+| 🧠 **AI Product Manager** | Product strategy, AI feature design, prompt engineering, model selection |
+| 💻 **Full-Stack Developer** | Python, FastAPI, Google Apps Script, automation pipelines, API integration |
+
+This repository is part of a personal toolbox — a growing collection of practical, reusable modules that solve real automation problems. Each project is designed to be independently useful and easily integrated into larger systems.
+
+📬 **donglinfei@gmail.com** — open to business discussions, collaborations, and recruiting inquiries.
 
 ## 📬 Contact
 
