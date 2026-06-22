@@ -1,130 +1,114 @@
-# Feishu Bot Pusher
+<div align="center">
 
-A Python module for sending multi-type messages to Feishu (Lark) via Bot API. Supports text, image, file, audio, video, rich text (post), and interactive card messages.
+# 📣 Feishu Bot Pusher
 
-## Features
+**Python module for sending 7 types of messages via Feishu (Lark) Bot API**
 
-- **7 message types**: text, image, file, audio, video, rich text (post), interactive card
-- **Bot identity**: sends messages as a Feishu Bot (not a webhook)
-- **Auto token management**: caches tenant_access_token with auto-refresh
-- **Media auto-upload**: uploads images/files before sending
-- **Configurable**: environment variables, config file, or constructor args
+[![GitHub Stars](https://img.shields.io/github/stars/donglinfei-debug/feishu-bot-pusher?style=flat-square&logo=github)](https://github.com/donglinfei-debug/feishu-bot-pusher/stargazers)
+[![GitHub Issues](https://img.shields.io/github/issues/donglinfei-debug/feishu-bot-pusher?style=flat-square&logo=github)](https://github.com/donglinfei-debug/feishu-bot-pusher/issues)
+[![GitHub Forks](https://img.shields.io/github/forks/donglinfei-debug/feishu-bot-pusher?style=flat-square&logo=github)](https://github.com/donglinfei-debug/feishu-bot-pusher/forks)
+[![License](https://img.shields.io/github/license/donglinfei-debug/feishu-bot-pusher?style=flat-square)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg?style=flat-square&logo=python)](https://www.python.org/)
+[![Feishu](https://img.shields.io/badge/Feishu-OpenAPI-blue.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMkM2LjQ4IDIgMiA2LjQ4IDIgMTJzNC40OCAxMCAxMCAxMCAxMC00LjQ4IDEwLTEwUzE3LjUyIDIgMTIgMnptMCAxOGMtNC40MSAwLTgtMy41OS04LThzMy41OS04IDgtOCA4IDMuNTkgOCA4LTMuNTkgOC04IDh6IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==)](https://open.feishu.cn/)
 
-## Quick Start
+🌏 **Language / 语言**：[🇨🇳 中文](README.zh.md) | [🇬🇧 English](README.md)
 
-### 1. Install
+</div>
+
+---
+
+A Python module for sending multi-type messages to **Feishu (Lark)** via the Open API Bot identity — not a webhook. Supports text, image, file, audio, video, rich text (post), and interactive card messages with automatic token management.
+
+## 🏗️ Architecture
+
+```mermaid
+flowchart LR
+    subgraph YourCode["🧩 Your Application"]
+        APP[Your Script]
+    end
+    subgraph Module["📦 feishu_bot.py"]
+        FB[FeiShuBot Class]
+        TM[Token Manager<br/>auto-refresh]
+        FU[File Uploader<br/>auto-upload]
+    end
+    subgraph Feishu["☁️ Feishu OpenAPI"]
+        API[Open API Gateway]
+    end
+
+    APP --> FB
+    FB --> TM
+    FB --> FU
+    FB --> API
+
+    style APP fill:#6366f1,color:#fff,stroke:none
+    style FB fill:#0ea5e9,color:#fff,stroke:none
+    style TM fill:#0ea5e9,color:#fff,stroke:none
+    style FU fill:#0ea5e9,color:#fff,stroke:none
+    style API fill:#f59e0b,color:#fff,stroke:none
+```
+
+## 📦 Features
+
+| # | Feature | Description |
+|:--|:--------|:------------|
+| 1 | **7 Message Types** | Text, image, file, audio, video, rich text, interactive card |
+| 2 | **Bot Identity** | Sends as a Feishu Bot (not a webhook) |
+| 3 | **Auto Token Mgmt** | Caches `tenant_access_token` with auto-refresh |
+| 4 | **Media Auto-Upload** | Uploads images/files before sending |
+| 5 | **Flexible Config** | Env vars, config file, or constructor args |
+
+## 📦 Requirements
+
+| Requirement | Version |
+|:------------|:--------|
+| **Python** | 3.7+ |
+| **requests** | Any recent version |
+| **Feishu App** | Self-built app with Bot capability enabled |
+
+## 🚀 Quick Start
 
 ```bash
 pip install requests
 ```
-
-### 2. Configure
-
-Set environment variables:
-
-```bash
-export FEISHU_APP_ID=cli_xxxxxxxxxxxxxxxxxxxx
-export FEISHU_APP_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-export FEISHU_DEFAULT_USER_ID=ou_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
-
-Or create `feishu_config.json`:
-
-```json
-{
-    "app_id": "cli_xxxxxxxxxxxxxxxxxxxx",
-    "app_secret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    "default_user_id": "ou_xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-}
-```
-
-### 3. Send a message
 
 ```python
 from feishu_bot import FeiShuBot
 
 bot = FeiShuBot()
 
-# Text
+# Send text
 bot.send_text("Hello from Feishu Bot")
 
-# Image
+# Send image
 bot.send_image("screenshot.png")
 
-# File
-bot.send_file("report.pdf")
-
-# Rich text
+# Send rich text
 bot.send_post("Notice", [
     {"tag": "md", "text": "**Update**: v2.0 released"},
     {"tag": "a", "text": "Details", "href": "https://example.com"},
 ])
-
-# Interactive card
-bot.send_card(
-    header_title="System Alert",
-    header_template="red",
-    elements=[
-        {"tag": "markdown", "content": "**CPU**: 92%\n**Memory**: 78%"},
-        {"tag": "hr"},
-        {"tag": "note", "elements": [{"tag": "plain_text", "content": "Please take action"}]}
-    ]
-)
 ```
 
-## Message Types
-
-| Type | Method | Description |
-|:----|:-------|:------------|
-| Text | `send_text()` | Plain text |
-| Image | `send_image()` | Image file (auto-upload) |
-| File | `send_file()` | Any file format |
-| Audio | `send_audio()` | Audio (opus/amr format) |
-| Video | `send_video()` | Video with cover image |
-| Rich Text | `send_post()` | Formatted text with markdown, links, mentions |
-| Card | `send_card()` | Interactive card with color header and components |
-
-## Configuration Priority
+## 📁 Files
 
 ```
-constructor args > environment variables > config file (feishu_config.json)
+feishu-bot-pusher/
+├── feishu_bot.py         # Core module — FeiShuBot class
+├── feishu_config.json    # Config file (optional)
+├── .env.example          # Environment variable template
+├── requirements.txt      # requests
+├── LICENSE               # MIT
+└── README.md / README.zh.md
 ```
 
-## Requirements
+## 📄 License
 
-- Python 3.7+
-- requests
+MIT © 2026 Ryan Dong
 
-## Configuration
+## 🌟 Star History
 
-Configuration priority:
+[![Star History Chart](https://api.star-history.com/svg?repos=donglinfei-debug/feishu-bot-pusher&type=Date)](https://star-history.com/#donglinfei-debug/feishu-bot-pusher&Date)
 
-```
-constructor args > environment variables > config file (feishu_config.json)
-```
+## 📬 Contact
 
-To use `.env` files, install `python-dotenv` and add this to your script:
-
-```python
-from dotenv import load_dotenv
-load_dotenv()
-```
-
-## Use Cases
-
-- **AI agent output delivery** — route AI summaries, analysis results, or task completion notifications to Feishu
-- **Multi-channel notification hub** — unify alerts from monitoring, CI/CD, and business systems into one Feishu bot
-- **Personal productivity assistant** — receive file/note/reminder pushes from automated scripts to your Feishu
-- **Team collaboration bot** — build custom bots that send formatted reports, charts, and interactive cards to group chats
-- **Media sharing pipeline** — automatically forward screenshots, recordings, or video clips to Feishu contacts
-
-## Author
-
-**Ryan Dong** — Full-stack Developer & AI Product Manager
-
-- Email: donglinfei@gmail.com
-- GitHub: [github.com/donglinfei-debug](https://github.com/donglinfei-debug)
-
-## License
-
-MIT
+Ryan Dong — donglinfei@gmail.com
