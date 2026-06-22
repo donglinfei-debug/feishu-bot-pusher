@@ -19,6 +19,18 @@
 
 A Python module for sending multi-type messages to **Feishu (Lark)** via the Open API Bot identity — not a webhook. Supports text, image, file, audio, video, rich text (post), and interactive card messages with automatic token management.
 
+
+## 📌 Why This?
+
+**You've built a Python script that needs to send messages to Feishu — but the webhook isn't enough.**
+
+- **You want to send images, files, audio, video** — Feishu webhooks only support text and simple cards
+- **Your token expires every 2 hours** — without automatic refresh, your bot goes silent until you manually re-authenticate
+- **You need interactive cards** — the raw Feishu Open API is verbose and error-prone to call directly
+- **You have multiple automation scripts** — each one ends up duplicating the same Feishu integration code
+
+**Feishu Bot Pusher** wraps all of this into a single `from feishu_bot import FeiShuBot`. One import, 7 message types, automatic token management. Your scripts stay clean, your team stays notified.
+
 ## 🏗️ Architecture
 
 ```mermaid
@@ -101,6 +113,13 @@ feishu-bot-pusher/
 └── README.md / README.zh.md
 ```
 
+
+
+---
+
+## 🔍 Keywords & Search Terms
+
+**IBKR options trading automation**, **Interactive Brokers Python API**, **options trading bot architecture**, **Iron Condor strategy automation**, **SPX options trading**, **IBKR API connection management**, **automated options trading system**, **TWS API Python**, **IB Gateway integration**, **options chain data fetching**, **limit order price adjustment**, **trading risk control debounce**, **Feishu bot notification**, **DingTalk webhook integration**, **Gmail AI summary notification**, **Google Apps Script Gmail monitoring**, **AI subtitle proofreading**, **ASR speech recognition**, **DeepSeek API integration**, **Alibaba Cloud fun-asr**, **subtitle generation automation**, **Claude Code planning skill**, **AI structured planning framework**, **GitHub public-prep security scan**, **open source project sanitization**, **secret detection automation**, **public repository checklist**
 ## 📄 License
 
 MIT © 2026 Ryan Dong

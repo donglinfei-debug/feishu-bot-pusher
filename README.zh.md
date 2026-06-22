@@ -19,6 +19,18 @@
 
 基于飞书 OpenAPI 自建应用 Bot 身份的消息推送模块。支持 7 种消息类型：文本、图片、文件、音频、视频、富文本、交互卡片。自动管理 Token 生命周期，内置文件上传能力。
 
+
+## 📌 为什么需要这个模块？
+
+**你的 Python 脚本需要发消息到飞书，但 Webhook 机器人根本不够用。**
+
+- **你想发图片、文件、音频、视频**——飞书 Webhook 只支持文本和简单的卡片
+- **Token 每两小时过期**——没有自动刷新，Bot 就静默罢工了
+- **你需要交互卡片**——飞书 Open API 的原始调用极其冗长，容易出错
+- **你有多个自动化脚本**——每个脚本都得重写一遍飞书集成代码
+
+**Feishu Bot Pusher** 把所有复杂封装成一行 `from feishu_bot import FeiShuBot`。一个 import，7 种消息类型，Token 自动管理。
+
 ## 🏗️ 架构示意
 
 ```mermaid
@@ -92,6 +104,13 @@ feishu-bot-pusher/
 └── README.md / README.zh.md
 ```
 
+
+
+---
+
+## 🔍 搜索关键词
+
+IBKR 期权自动化交易、Interactive Brokers Python API、期权交易机器人架构、铁鹰策略自动化、SPX 期权交易、IBKR API 连接管理、TWS API Python、IB Gateway 集成、期权链数据批量获取、限价单价格调整、交易风控防抖机制、飞书 Bot 消息推送、钉钉 Webhook 集成、Gmail AI 摘要通知、Google Apps Script 邮件监控、AI 字幕校对、ASR 语音识别、DeepSeek API 集成、阿里云通义听悟 fun-asr、字幕自动生成、Claude Code 规划技能、AI 结构化规划框架、GitHub 公开仓库预处理、开源项目安全清洗、密钥自动检测、公开仓库操作清单
 ## 📄 许可证
 
 MIT © 2026 Ryan Dong
